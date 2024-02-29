@@ -11,7 +11,8 @@
   .App {
     min-height: 100vh;
     width: 85vw;
-    max-width: 1900px;
+    max-width: 100%;
+    max-height: 100%;
     margin: 0rem auto;
   }
   body {
@@ -27,7 +28,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-height: 90px;
+    min-height: 90%;
   }
   .nav-logo-container {
     max-width: 35%;    
@@ -106,6 +107,10 @@
     justify-content: center;
     align-items: flex-start;
   }
+  .work-img {
+    max-width: 75%;
+  }
+
   .primary-heading {
     font-size: clamp(2rem, 3.5vw, 4rem);
     color: #4c4c4c;
@@ -119,7 +124,7 @@
     margin: 1.5rem 0rem;
   }
   .secondary-button {
-    padding: 1rem 2.5rem;
+    padding: 1rem 1.5rem;
     background-color: #5D3587;
     outline: none;
     border: none;
@@ -164,7 +169,7 @@
   }
   .primary-subheading {
     font-weight: 700;
-    color: #fe9e0d;
+    color: #5D3587;
     font-size: 1.15rem;
   }
   .about-buttons-container {
@@ -172,7 +177,7 @@
     display: flex;
   }
   .watch-video-button {
-    margin-left: 2rem;
+    margin-left: -0.75rem;
     background-color: transparent;
     outline: none;
     border: none;
@@ -180,14 +185,14 @@
     font-size: 1.1rem;
     cursor: pointer;
     font-weight: 600;
-    color: #484848;
+    color: #FFD1E3;
     transition: 0.2s;
     display: flex;
     align-items: center;
     justify-content: center;
   }
   .watch-video-button svg {
-    font-size: 3rem;
+    font-size: 2rem;
     margin-right: 1rem;
   }
   .contact-page-wrapper h1 {
@@ -218,13 +223,29 @@
     font-size: 1.3rem;
     padding: 0.5rem 1rem;
   }
+  .bottom-right-text {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: -3.25rem -2rem;
+    font-style: italic;
+    font-weight: 600;
+    color: #707070;
+    cursor: pointer;
+}
   .footer-wrapper {
+    position: relative;
     margin: 6rem 0rem;
     display: flex;
     margin-top: 10rem;
+    color:#392467;
   }
   .footer-logo-container {
-    max-width: 110px;
+    max-width: 35%;
+  }
+  .footer-logo-img {
+    width: 100%;
+    height: auto;
   }
   .footer-icons {
     margin-top: 2.5rem;
@@ -232,7 +253,7 @@
   .footer-icons svg {
     font-size: 1.5rem;
     margin-right: 1.25rem;
-    color: #585858;
+    color: #5D3587;
   }
   /* .footer-section-one {
     border: 2px solid blue;
@@ -243,6 +264,7 @@
     justify-content: flex-end;
   }
   .footer-section-columns {
+    position:relative;
     display: flex;
     flex-direction: column;
     min-width: 190px;
@@ -278,11 +300,35 @@
   .testimonials-stars-container svg {
     margin: 0rem 0.25rem;
     font-size: 1.5rem;
-    color: #fe9e0d;
+    color: #5D3587;
   }
   .testimonial-section-bottom h2 {
     margin-top: 1.5rem;
   }
+  .arrow-bttn-container {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+  }
+  
+  .arrow-bttn {
+    background-color: #5D3587; 
+    color: #ffffff; 
+    border: none; 
+    padding: 4px 6px; 
+    font-size: 16px; 
+    cursor: pointer;
+    border-radius: 50%; 
+  }
+  .arrow-bttn:first-child {
+    margin-right: 15px; 
+  }
+  
+  .arrow-bttn:last-child {
+    margin-left: 15px; 
+  }
+  
+  
   .work-section-wrapper {
     margin-top: 15rem;
   }
@@ -346,7 +392,7 @@
     .nav-logo-container {
         max-width: 35%;    
     }
-    .logo-img {
+    .nav-logo-img {
         width: 100%;
         height: auto;
       }
