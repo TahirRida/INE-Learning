@@ -48,6 +48,13 @@
     font-size: 1.1rem;
     font-weight: 600;
   }
+  .item-navbar{
+    margin-right: 3rem;
+    text-decoration: none !important;
+    color: #4c4c4c;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
   .primary-button {
     padding: 0.4rem 1.75rem;
     background-color: #FFD1E3;
