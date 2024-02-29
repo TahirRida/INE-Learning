@@ -13,6 +13,7 @@ import InfoIcon from "@mui/icons-material/Info";
 import CommentRoundedIcon from "@mui/icons-material/CommentRounded";
 import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
 import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
+import { Link } from "@mui/material";
 function scrollToSection(id) {
   const element = document.getElementById(id);
   if (element) {
@@ -63,7 +64,7 @@ function handleNavLinkClick(event, id) {
       <a href="#about" onClick={(event) => handleNavLinkClick(event, 'about')}>About</a>
       <a href="#work" onClick={(event) => handleNavLinkClick(event, 'work')}>How it works</a>
       <a href="#testimonial" onClick={(event) => handleNavLinkClick(event, 'testimonial')}>Testimonials</a>
-        <button className="primary-button">Login</button>
+        <Link to='/login'><button className="primary-button">Login</button></Link>
         <button className="primary-button2">Sign Up</button>
       </div>
       
