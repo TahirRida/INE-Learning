@@ -6,14 +6,17 @@ import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
+<<<<<<< HEAD
 import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
 import CommentRoundedIcon from "@mui/icons-material/CommentRounded";
 import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
 import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
 import { Link } from "@mui/material";
+=======
+>>>>>>> origin/Develop
 function scrollToSection(id) {
   const element = document.getElementById(id);
   if (element) {
@@ -21,35 +24,26 @@ function scrollToSection(id) {
   }
 }
 const Navbar = () => {
- /* const [openMenu, setOpenMenu] = useState(false);
+ const [openMenu, setOpenMenu] = useState(false);
   const menuOptions = [
     {
-      text: "Home",
-      icon: <HomeIcon />,
-      path: "/home", // corrected path
+      text: "About",
+      event: "about",
+      path: "#about", 
     },
     {
-      text: "About",
-      icon: <InfoIcon />,
-      path: "/about", // corrected path
+      text: "How it works",
+      event: "work",
+      path: "#work", 
     },
     {
       text: "Testimonials",
-      icon: <CommentRoundedIcon />,
-      path: "/testimonial", // corrected path
+      event: "testimonial",
+      path: "#testimonial", 
     },
-    {
-      text: "Contact",
-      icon: <PhoneRoundedIcon />,
-      path: "/contact", // corrected path
-    },
-    {
-      text: "Cart",
-      icon: <ShoppingCartRoundedIcon />,
-      path: "/cart", // corrected path
-    },
+
   ];
-*/
+
 function handleNavLinkClick(event, id) {
   event.preventDefault();
   scrollToSection(id);
@@ -68,7 +62,7 @@ function handleNavLinkClick(event, id) {
         <button className="primary-button2">Sign Up</button>
       </div>
       
- {/*    <div className="navbar-menu-container">
+    <div className="navbar-menu-container">
         <HiOutlineBars3 onClick={() => setOpenMenu(true)} />
       </div>
       <Drawer open={openMenu} onClose={() => setOpenMenu(false)} anchor="right">
@@ -80,15 +74,17 @@ function handleNavLinkClick(event, id) {
         >
           <List>
             {menuOptions.map((item) => (
-              <ListItem button key={item.text} component={Link} to={item.path}>
-                <ListItemIcon>{item.icon}</ListItemIcon>
-                <ListItemText primary={item.text} />
+              <ListItem key={item.text} disablePadding>
+                <ListItemButton >
+                <a href={item.path} onClick={(event) => handleNavLinkClick(event, item.event)}>
+                  <ListItemText primary={item.text} class="item-navbar"/> </a>
+                </ListItemButton>
               </ListItem>
             ))}
           </List>
           <Divider />
         </Box>
-            </Drawer>*/}
+      </Drawer>
     </nav>
   );
 };
