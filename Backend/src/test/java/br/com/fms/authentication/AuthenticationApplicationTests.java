@@ -1,10 +1,10 @@
-package com.Backend.Backend;
+package br.com.fms.authentication;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BackendApplicationTests {
+class AuthenticationApplicationTests {
 
 	@Test
 	void contextLoads() {
