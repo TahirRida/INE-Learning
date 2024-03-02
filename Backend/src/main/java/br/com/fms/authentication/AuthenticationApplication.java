@@ -1,13 +1,13 @@
-package com.Backend.Backend;
+package br.com.fms.authentication;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BackendApplication {
+public class AuthenticationApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BackendApplication.class, args);
+		SpringApplication.run(AuthenticationApplication.class, args);
 	}
 
 }
