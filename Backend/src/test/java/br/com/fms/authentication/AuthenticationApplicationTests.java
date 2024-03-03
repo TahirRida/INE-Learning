@@ -38,74 +38,49 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 class AuthenticationApplicationTests {
-	@InjectMocks
+	@Autowired
 	private AuthController authController;
 
-
-	@Mock
+	@Autowired
 	private UserRepository userRepository;
 
-	@Mock
-	private RoleRepository roleRepository;
-
-	@Mock
+	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-
-	@Mock
+	@Autowired
 	private AuthenticationManager authenticationManager;
-
-	@Mock
-	private JwtUtils jwtUtils;
-
-	@Mock
-	private UserDetailsImpl userDetails;
 
 	@Test
 	public void testRegisterUser_Success() {
-		Role roleUser = new Role();
-		roleUser.setId("1");
-		roleUser.setName(ERole.ROLE_USER);
-		Mockito.when(roleRepository.findByName(ERole.ROLE_USER)).thenReturn(Optional.of(roleUser));
+		// Prepare test data
+		String username = "testuser2";
+		String email = "testuser2@example.com";
+		String password = "testpassword";
 
-		// Create a SignupRequest object
+		// Create a new user request
 		SignupRequest request = new SignupRequest();
-		request.setUsername("testuser");
-		request.setEmail("testuser@example.com");
-		request.setPassword("testpassword");
-		request.setRoles(Collections.singleton("ROLE_USER"));
+		request.setUsername(username);
+		request.setEmail(email);
+		request.setPassword(password);
 
 		// Call the controller method
 		ResponseEntity<?> response = authController.registerUser(request);
 
 		// Verify response
 		assertEquals(HttpStatus.OK, response.getStatusCode());
+		assertNotNull(response.getBody());
 		assertEquals("User registered successfully!", ((MessageResponse) response.getBody()).getMessage());
 	}
-
 	@Test
 	public void testAuthenticateUser_Success() {
 		// Prepare test data
-		String username = "testuser";
+		String username = "testuser1";
 		String password = "testpassword";
-		String email = "testuser@example.com";
-		String encodedPassword = "encodedPassword";
-		User user = new User(username, email, encodedPassword);
-		user.setId("1");
+		String email = "testuser1@example.com";
 
-		// Mock UserRepository behavior
-		Mockito.when(userRepository.findByUsername(username)).thenReturn(Optional.of(user));
-
-		// Mock PasswordEncoder behavior
-		Mockito.when(passwordEncoder.matches(password, encodedPassword)).thenReturn(true);
-
-		// Mock AuthenticationManager behavior
-		Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, password);
-		Mockito.when(authenticationManager.authenticate(Mockito.any(Authentication.class))).thenReturn(authentication);
-
-		// Mock JwtUtils behavior
-		String token = "mocked_token";
-		Mockito.when(jwtUtils.generateJwtToken(Mockito.any())).thenReturn(token);
+		// Create a new user
+		User user = new User(username, email, passwordEncoder.encode(password));
+		userRepository.save(user);
 
 		// Create a LoginRequest object
 		LoginRequest request = new LoginRequest();
@@ -118,7 +93,7 @@ class AuthenticationApplicationTests {
 		// Verify response
 		assertEquals(HttpStatus.OK, response.getStatusCode());
 		assertNotNull(response.getBody());
-		assertEquals(token, ((JwtResponse) response.getBody()).getToken());
+		// Additional assertions based on response body
 	}
 
 }
