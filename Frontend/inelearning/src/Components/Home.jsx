@@ -8,6 +8,7 @@ import Testimonial from "./HomeComponents/Testimonial";
 import Contact from "./HomeComponents/Contact";
 import Footer from "./HomeComponents/Footer";
 import Navbar from "./HomeComponents/Navbar";
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -25,9 +26,7 @@ const Home = () => {
             <p className="primary-text">
               Embark on Your Learning Journey : Explore, Share, Grow with INElearning!
             </p>
-            <button className="secondary-button">
-              Register Now <FiArrowRight />
-            </button>
+            <Link to={'/signUp'}><button className="secondary-button">Register Now <FiArrowRight /></button></Link>
           </div>
           <div className="home-image-section">
             <img src={BannerImage} alt="" />
