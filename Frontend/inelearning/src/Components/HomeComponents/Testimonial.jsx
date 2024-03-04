@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import ProfilePic1 from "../Assets/sajid.png";
-import ProfilePic2 from "../Assets/rida.jpeg";
+import ProfilePic1 from "../../Assets/sajid.png";
+import ProfilePic2 from "../../Assets/rida.jpeg";
 import { AiFillStar } from "react-icons/ai";
 import { FaArrowCircleRight } from "react-icons/fa";
 import { FaArrowCircleLeft } from "react-icons/fa";

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import Logo from "../Assets/inelogo.png";
+import { Link } from 'react-router-dom';
+import Logo from "../../Assets/inelogo.png";
 import { HiOutlineBars3 } from "react-icons/hi2";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -49,8 +50,8 @@ function handleNavLinkClick(event, id) {
       <a href="#about" onClick={(event) => handleNavLinkClick(event, 'about')}>About</a>
       <a href="#work" onClick={(event) => handleNavLinkClick(event, 'work')}>How it works</a>
       <a href="#testimonial" onClick={(event) => handleNavLinkClick(event, 'testimonial')}>Testimonials</a>
-        <button className="primary-button">Login</button>
-        <button className="primary-button2">Sign Up</button>
+      <Link to={'/login'}><button className="primary-button">Login</button></Link>
+      <Link to={'/signUp'}><button className="primary-button2">SignUp</button></Link>
       </div>
       
     <div className="navbar-menu-container">

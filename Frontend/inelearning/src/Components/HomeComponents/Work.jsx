@@ -1,7 +1,7 @@
 import React from "react";
-import CreateAccount from "../Assets/create-account.png";
-import Post from "../Assets/post.png";
-import Check from "../Assets/consult.png";
+import CreateAccount from "../../Assets/create-account.png";
+import Post from "../../Assets/post.png";
+import Check from "../../Assets/consult.png";
 
 const Work = () => {
   const workInfoData = [
