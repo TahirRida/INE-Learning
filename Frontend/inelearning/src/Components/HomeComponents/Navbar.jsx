@@ -50,8 +50,7 @@ function handleNavLinkClick(event, id) {
       <a href="#about" onClick={(event) => handleNavLinkClick(event, 'about')}>About</a>
       <a href="#work" onClick={(event) => handleNavLinkClick(event, 'work')}>How it works</a>
       <a href="#testimonial" onClick={(event) => handleNavLinkClick(event, 'testimonial')}>Testimonials</a>
-      <Link to={'/login'}><button className="primary-button">Login</button></Link>
-      <Link to={'/signUp'}><button className="primary-button2">SignUp</button></Link>
+      <Link to={'/login'}><button className="primary-button">Get Started</button></Link>
       </div>
       
     <div className="navbar-menu-container">

@@ -2,7 +2,6 @@ import "./App.css";
 import * as React from "react";
 import Home from "./Components/Home";
 import LoginPage from "./Components/LoginPage";
-import SignUpPage from "./Components/SignUpPage";
 import ErrorPage from "./Components/errorPage";
 import {createBrowserRouter} from "react-router-dom";
 
@@ -17,10 +16,7 @@ const router = createBrowserRouter([
     path: "/login",
     element: <LoginPage />,
   },
-  {
-    path: "/signup",
-    element: <SignUpPage />,
-  }
+  
 
 ]);
 

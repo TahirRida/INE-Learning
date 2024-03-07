@@ -26,7 +26,7 @@ const Home = () => {
             <p className="primary-text">
               Embark on Your Learning Journey : Explore, Share, Grow with INElearning!
             </p>
-            <Link to={'/signUp'}><button className="secondary-button">Register Now <FiArrowRight /></button></Link>
+            <Link to={'/login'}><button className="secondary-button">Register Now <FiArrowRight /></button></Link>
           </div>
           <div className="home-image-section">
             <img src={BannerImage} alt="" />

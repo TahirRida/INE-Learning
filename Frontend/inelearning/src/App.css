@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -84,6 +87,7 @@
   }
   .primary-button:hover {
     background-color: #5D3587;
+   color: #f6f6f6;
   }
   .primary-button2:hover {
     background-color: #5D3587;
