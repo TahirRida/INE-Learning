@@ -1,13 +1,13 @@
 import React from "react";
-import BannerBackground from "../Assets/home-banner-background.png";
-import BannerImage from "../Assets/home-student-with-books.png";
+import BannerBackground from "../../Assets/home-banner-background.png";
+import BannerImage from "../../Assets/home-student-with-books.png";
 import { FiArrowRight } from "react-icons/fi";
-import About from "./HomeComponents/About";
-import Work from "./HomeComponents/Work";
-import Testimonial from "./HomeComponents/Testimonial";
-import Contact from "./HomeComponents/Contact";
-import Footer from "./HomeComponents/Footer";
-import Navbar from "./HomeComponents/Navbar";
+import About from "./About";
+import Work from "./Work";
+import Testimonial from "./Testimonial";
+import Contact from "./Contact";
+import Footer from "./Footer";
+import Navbar from "./Navbar";
 import { Link } from 'react-router-dom';
 
 const Home = () => {
