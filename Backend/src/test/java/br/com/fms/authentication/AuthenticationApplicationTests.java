@@ -74,9 +74,9 @@ class AuthenticationApplicationTests {
 	@Test
 	public void testAuthenticateUser_Success() {
 		// Prepare test data
-		String username = "testuser1";
+		String username = "testuser10";
 		String password = "testpassword";
-		String email = "testuser1@example.com";
+		String email = "testuser10@example.com";
 
 		// Create a new user
 		User user = new User(username, email, passwordEncoder.encode(password));
