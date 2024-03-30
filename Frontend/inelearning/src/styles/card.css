@@ -24,12 +24,12 @@
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
     padding: 20px;
     box-sizing: border-box;
-  }
-  
-  .course-card-item:hover {
-    transform: translateY(-8px);
-    transition: transform 0.3s ease;
-  }
+    transition: transform 0.3s ease; /* Add transition to smooth the zoom effect */
+}
+
+.course-card-item:hover {
+    transform: scale(1.05); /* Increase the scale slightly to create a zoom effect */
+}
   
   .course-card-item img {
     width: 100%;

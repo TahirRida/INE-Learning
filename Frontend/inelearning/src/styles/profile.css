@@ -1,0 +1,81 @@
+.profile-containerAll{
+    background-color: #ffffff; /* Background color of the profile box */
+    border-radius: 10px; /* Add rounded corners to the profile box */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    margin: 4%;
+    
+
+}
+.profile-container {
+    padding: 2%;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.profile-info h2 {
+    margin-left: 10px;
+}
+
+.course-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust the minmax values as needed */
+    gap: 20px;
+}
+
+.course-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    transition: transform 0.3s ease;
+
+}
+.course-card.zoomed {
+    transform: scale(1.1); /* Adjust the scale factor as needed */
+}
+
+.course-card button {
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.course-card button:last-child {
+    margin-right: 0;
+}
+/* Apply styles to the "Update" button */
+.course-card .update-button {
+    background-color: green;
+    color: white;
+    margin-top: 10px; /* Add margin-top to separate from other buttons */
+}
+
+.course-card .update-button:hover {
+    background-color: darkgreen;
+}
+
+/* Apply styles to the "Delete" button */
+.course-card .delete-button {
+    background-color: red;
+    color: white;
+    margin-top: 10px; /* Add margin-top to separate from other buttons */
+}
+
+.course-card .delete-button:hover {
+    background-color: darkred;
+}
+.home-banner-container {
+    position: relative;
+    display: flex;
+    padding-top: 1rem;
+  }
+  .home-bannerImage-container {
+    position: absolute;
+    top: -100px;
+    right: -170px;
+    z-index: -2;
+    max-width: 700px;
+  }
