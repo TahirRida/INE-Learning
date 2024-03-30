@@ -77,7 +77,7 @@ import { FiArrowLeft } from 'react-icons/fi';
             <div className='toggle-panel toggle-left'>
               <h1>Welcome Back!</h1>
               <p>Enter your personal details to use all site features</p>
-              <button className='hidden' onClick={() => setIsSignUp(false)}>
+              <button className='sign' onClick={() => setIsSignUp(false)}>
                 Sign In
               </button>
               {error && <p>{error}</p>}
@@ -85,7 +85,7 @@ import { FiArrowLeft } from 'react-icons/fi';
             <div className='toggle-panel toggle-right'>
               <h1>Hello, INE !</h1>
               <p>Register with your personal details to use all site features</p>
-              <button className='hidden' onClick={() => setIsSignUp(true)}>
+              <button className='sign' onClick={() => setIsSignUp(true)}>
                 Sign Up
               </button>
             </div>

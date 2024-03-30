@@ -6,18 +6,18 @@ import { Search } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import "../../styles/searchbar.css";
 
-const SearchBar = () => {
+const SearchBar = ({handleViewProfile}) => {
     const navigate = useNavigate();
     const [searchTerm, setSearchTerm] = useState("");
     const username = localStorage.getItem('username');
     const onhandleSubmit = (event) => {
         event.preventDefault();
         if (searchTerm) {
-            navigate(`/SearchFeed`, { state: { searchTerm } });
+            navigate(`/searchFeed`, { state: { searchTerm } });
             setSearchTerm("");
         }
     };
-
+    
     return (
         <nav className="navbar">
             <div className="nav-logo-container">
@@ -59,7 +59,7 @@ const SearchBar = () => {
             </div>
             <div className="navbar-right">
                 <div className="hello-rida-container">
-                    <p>Hello {username}</p>
+                    <p>Hello<button sx={{ p: "10px", color: "#A367B1" }} onClick={handleViewProfile}>{username}</button> </p>
                     {/* Add rounded picture here */}
                 </div>
 

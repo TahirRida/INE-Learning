@@ -6,12 +6,14 @@ import Sidebar from './Sidebar';
 import './../../styles/card.css';
 import BannerBackground from "../../Assets/home-banner-background.png";
 import AboutBackground from "../../Assets/about-background.png";
+import { useLocation } from 'react-router-dom';
 
 const SearchFeed = () => {
     const [courses, setCourses] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [courseId, setCourseId] = useState(''); // Define courseId state
+    const [courseId, setCourseId] = useState('');
+    const location = useLocation();
     const searchTerm = location.state && location.state.searchTerm ? location.state.searchTerm : '';
     const setAuthToken = () => {
         const token = localStorage.getItem('token');
@@ -66,13 +68,15 @@ const SearchFeed = () => {
                 <img src={AboutBackground} alt="" />
             </div>
             <div className="feed-container">
-                <h2>Courses</h2>
-                <div className="course-list">
-                    {courses
-                        .filter(course => course.title.startsWith(searchTerm)) // Adjust 'YourSearchTerm' as needed
-                        .map(course => (
-                            <CourseCard key={course.courseId} course={course} />
-                        ))}
+                <h2>
+                    Results for <span style={{ color: '#5D3587', fontStyle: 'italic' }}>{`''${searchTerm}''  `}</span>:
+                </h2>                <div className="course-list">
+                {courses && courses
+  .filter(course => course.title && course.title.toLowerCase().includes(searchTerm.toLowerCase()))
+  .map(course => (
+    <CourseCard key={course.courseId} course={course} />
+  ))}
+
                 </div>
             </div>
         </div>

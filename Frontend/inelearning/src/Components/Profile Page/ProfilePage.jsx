@@ -9,8 +9,6 @@ const ProfilePage = () => {
     const location = useLocation();
     const userOwnedCourses = location.state && location.state.userOwnedCourses ? location.state.userOwnedCourses : [];
     
-    console.log("courses:" , userOwnedCourses);
-
     return (
         <div className="profile-container">
             <div className="profile-info">
