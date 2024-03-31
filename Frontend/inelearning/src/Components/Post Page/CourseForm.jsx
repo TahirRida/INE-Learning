@@ -9,16 +9,21 @@ import { useNavigate } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 import LoadingPage from '../LoadingPage';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
+import baseURL from '../../utils/fetchConfig';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import { useDropzone } from 'react-dropzone';
+
 import {
   ref,
   uploadBytes,
   getDownloadURL,
 } from "firebase/storage";
-import { storage } from "./../../firbase";
+import { storage } from "../../firbase";
 import { v4 } from "uuid";
+import { getToken } from '../../utils/TokenContext';
 const CourseForm = () => {
   const [videoSelected, setVideoSelected] = useState(false);
-const [imageSelected, setImageSelected] = useState(false);
+  const [imageSelected, setImageSelected] = useState(false);
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
@@ -29,15 +34,28 @@ const [imageSelected, setImageSelected] = useState(false);
   const [image, setImage] = useState(null);
   const [imageUrl, setImageUrl] = useState('');
   const [loading, setLoading] = useState(false);
-  
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
+  const onDrop = (acceptedFiles) => {
+    const uploadedFile = acceptedFiles[0];
+    setFile(uploadedFile);
+  };
+  const { getRootProps } = useDropzone({
+    onDrop,
+    accept: 'video/*',
+    maxFiles: 1,
+  });
   const uploadFile = async () => {
-    if (file == null) return;
-    const videoRef = ref(storage, `videos/${file.name + v4()}`);
-    const snapshot = await uploadBytes(videoRef, file);
-    const vidurl = await getDownloadURL(snapshot.ref);
-    setVideoUrl(vidurl);
+    try {
+      const videoRef = ref(storage, `videos/${file.name + v4()}`);
+      const snapshot = await uploadBytes(videoRef, file);
+      const vidurl = await getDownloadURL(snapshot.ref);
+      console.log('videourl:', vidurl);
+      return vidurl; // Return the video URL after upload and URL retrieval
+    } catch (error) {
+      console.error('Error uploading file:', error);
+      throw error; // Throw the error to be caught by the caller
+    }
   };
   const handleImageUpload = async (event) => {
     setImageSelected(true);
@@ -54,15 +72,10 @@ const [imageSelected, setImageSelected] = useState(false);
   }, [file]);
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    formData.set(name, value); // Use formData.set to update form data
+    formData.set(name, value);
   };
-  useEffect(() => {
-    if (file) {
-      setVideoSelected(true);
-    }
-  }, [file]);  
   const setAuthToken = () => {
-    const token = localStorage.getItem('token');
+    const token = getToken();
     if (token) {
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     } else {
@@ -74,22 +87,23 @@ const [imageSelected, setImageSelected] = useState(false);
       setLoading(false);
     }, 2000);
 
-    return () => clearTimeout(timeout); //  function
+    return () => clearTimeout(timeout);
   }, []);
   const handleSubmit = async (event) => {
-    event.preventDefault(); // Prevent default form submission behavior
+    event.preventDefault();
   
     try {
       setLoading(true);
       setAuthToken();
-      await uploadFile();
+      const vidurl = await uploadFile(); 
+      setVideoUrl(vidurl);
       formData.append('title', title);
       formData.append('description', description);
-      formData.append('video', videoUrl);
+      formData.append('video', vidurl);
       formData.append('category', category);
       formData.append('thumbnail', imageUrl);
       console.log('fronted Response:', formData.get('video'));
-      const response = await axios.post('http://localhost:8080/api/courses', {
+      const response = await axios.post(`${baseURL}/courses`, {
         title: formData.get('title'),
         description: formData.get('description'),
         video: formData.get('video'),
@@ -101,15 +115,17 @@ const [imageSelected, setImageSelected] = useState(false);
       setTitle('');
       setDescription('');
       setCategory('');
-      setVideoUrl('');
       setImageUrl('');
       setImage(null);
       setOpenSnackbar(true);
     } catch (error) {
       console.error('Error uploading file:', error);
-      setLoading(false); // Set loading to false in case of error
+      setLoading(false);
     }
   };
+  
+  
+  
   const handleSnackbarClose = () => {
     setOpenSnackbar(false);
   };
@@ -118,9 +134,9 @@ const [imageSelected, setImageSelected] = useState(false);
   };
   return (
     <div className="container1">
-          <div>
-    {loading && <LoadingPage loading={loading}/>}
-  </div>
+      <div>
+        {loading && <LoadingPage loading={loading} />}
+      </div>
       <button className='feed-button' onClick={() => { console.log('Button clicked'); navigateToFeed(); }}>        <FiArrowLeft />
         Feed
       </button>
@@ -145,7 +161,7 @@ const [imageSelected, setImageSelected] = useState(false);
             value={title}
             onChange={(event) => {
               setTitle(event.target.value);
-              handleInputChange(event); // Call handleInputChange to update formData
+              handleInputChange(event);
             }}
             variant="outlined"
             fullWidth
@@ -160,7 +176,7 @@ const [imageSelected, setImageSelected] = useState(false);
             value={category}
             onChange={(event) => {
               setCategory(event.target.value);
-              handleInputChange(event); // Call handleInputChange to update formData
+              handleInputChange(event);
             }}
             variant="outlined"
             fullWidth
@@ -185,7 +201,7 @@ const [imageSelected, setImageSelected] = useState(false);
             value={description}
             onChange={(event) => {
               setDescription(event.target.value);
-              handleInputChange(event); // Call handleInputChange to update formData
+              handleInputChange(event);
             }}
             variant="outlined"
             fullWidth
@@ -198,50 +214,51 @@ const [imageSelected, setImageSelected] = useState(false);
               Upload Image:
             </Typography>
             <input
-  type="file"
-  accept=".jpg,.jpeg,.png"
-  onChange={(event) => {
-    setImage(event.target.value);
-    handleImageUpload(event);
-  }}
-  style={{
-    display: 'none', // Hide the default file input button
-  }}
-  id="fileInput" // Add an ID to the file input for styling
-/>
-<label
-  htmlFor="fileInput"
-  className="custom-file-upload"
-  style={{
-    marginTop: '10px',
-    cursor: 'pointer',
-    padding: '4px',
-    border: '8px solid #A367B1',
-    borderRadius: '5px',
-    backgroundColor: '#A367B1',
-    color: '#fff',
-    display: 'flex', // Use flexbox to align items vertically
-    alignItems: 'center', // Center items vertically
-    width: '200px',
-    gap:'8px' // Adjust width as needed
-  }}
- // Revert to original color on mouse leave
->
-  <span>Choose a Thumbnail</span>
-  <FileUploadIcon />
-</label>
+              type="file"
+              accept=".jpg,.jpeg,.png"
+              onChange={(event) => {
+                setImage(event.target.value);
+                handleImageUpload(event);
+              }}
+              style={{
+                display: 'none',
+              }}
+              id="fileInput"
+            />
+            <label
+              htmlFor="fileInput"
+              className="custom-file-upload"
+              style={{
+                marginTop: '10px',
+                cursor: 'pointer',
+                padding: '4px',
+                border: '8px solid #A367B1',
+                borderRadius: '5px',
+                backgroundColor: '#A367B1',
+                color: '#fff',
+                display: 'flex',
+                alignItems: 'center',
+                width: '200px',
+                gap: '8px'
+              }}
+
+            >
+              <span>Choose a Thumbnail</span>
+<FileUploadIcon />
+            </label>
 
 
-          {image && (
-            <img src={imageUrl} style={{ maxWidth: '100%', maxHeight: '300px', marginTop: '10px' }} />
-          )}
+            {image && (
+              <img src={imageUrl} style={{ maxWidth: '100%', maxHeight: '300px', marginTop: '10px' }} />
+            )}
           </div>
 
           <Typography variant="h6" className="formField">
             Upload:
           </Typography>
-          <FileUploader file={file} setFile={setFile} />
-
+          <div className="file-uploader-container" {...getRootProps()}>
+      <CloudUploadIcon style={{ fontSize: 60, color: '#5D3587' }} />
+      <p className="upload-text">Add or drag your videos</p> </div>
           <Button type="submit" variant="contained" className="submitButton1" disabled={!imageSelected || !videoSelected} >
             Submit
           </Button>

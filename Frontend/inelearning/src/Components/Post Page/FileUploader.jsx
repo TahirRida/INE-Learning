@@ -31,7 +31,7 @@ const FileUploader = ({ file, setFile }) => {
       <CloudUploadIcon style={{ fontSize: 60, color: '#5D3587' }} />
       <p className="upload-text">Add or drag your videos</p>
 
-     {/* {fileUrl && (
+      {/* {fileUrl && (
         <div className="video-preview">
           <Button onClick={handleOpen} variant="outlined" color="primary">
             View Video

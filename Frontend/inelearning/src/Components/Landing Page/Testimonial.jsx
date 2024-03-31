@@ -9,7 +9,6 @@ import { FaArrowCircleLeft } from "react-icons/fa";
 const Testimonial = () => {
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
 
-  // Array of testimonials
   const testimonials = [
     {
       name: 'Sajid Abderrahmane',
@@ -25,15 +24,13 @@ const Testimonial = () => {
 
 
   const profilePics = [
-    ProfilePic1,ProfilePic2
+    ProfilePic1, ProfilePic2
   ];
 
-  // Function to handle next testimonial
   const handleNextTestimonial = () => {
     setCurrentTestimonialIndex((prevIndex) => (prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1));
   };
 
-  // Function to handle previous testimonial
   const handlePrevTestimonial = () => {
     setCurrentTestimonialIndex((prevIndex) => (prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1));
   };
@@ -51,18 +48,15 @@ const Testimonial = () => {
         <img src={profilePics[currentTestimonialIndex]} alt="" style={{ borderRadius: '50%', width: '300px', height: '300px' }} />
         <p>{testimonials[currentTestimonialIndex].text}</p>
         <div className="testimonials-stars-container">
-          {/* Display star icons based on the number of stars */}
           {Array.from({ length: testimonials[currentTestimonialIndex].stars }, (_, index) => (
             <AiFillStar key={index} />
           ))}
         </div>
         <h2>{testimonials[currentTestimonialIndex].name}</h2>
         <div className='arrow-bttn-container'>
-  {/* Button to navigate to previous testimonial */}
-  <button onClick={handlePrevTestimonial} className="arrow-bttn"><FaArrowCircleLeft /></button>
-  {/* Button to navigate to next testimonial */}
-  <button onClick={handleNextTestimonial} className="arrow-bttn"><FaArrowCircleRight /></button>
-</div>
+          <button onClick={handlePrevTestimonial} className="arrow-bttn"><FaArrowCircleLeft /></button>
+          <button onClick={handleNextTestimonial} className="arrow-bttn"><FaArrowCircleRight /></button>
+        </div>
       </div>
     </div>
   );

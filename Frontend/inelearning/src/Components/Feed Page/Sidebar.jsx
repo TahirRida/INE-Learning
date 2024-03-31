@@ -1,7 +1,7 @@
 import React from 'react';
 import { Stack } from "@mui/material";
 
-const Sidebar = ({ categories, handleCategoryClick, setSelectedCategory, selectedCategory }) => {
+const Sidebar = ({ categories, handleCategoryClick, selectedCategory }) => {
   return (
     <Stack
       direction="row"
@@ -12,30 +12,30 @@ const Sidebar = ({ categories, handleCategoryClick, setSelectedCategory, selecte
         height: { sx: "auto", md: "95%" },
         paddingLeft: 0,
         paddingRight: 0,
-        width: { sx: "auto", md: "200px" }, // Adjust the width here
+        width: { sx: "auto", md: "200px" },
       }}
     >
       <h3>Categories</h3>
       {categories.map((category) => (
-      <button
-        className="category-btn"
-        onClick={() => handleCategoryClick(category)
-        }
-        style={{
-          background: category === selectedCategory && "#392467",
-          color: category === selectedCategory ? "#FFD1E3" : "#392467",
-        }}
-        key={category}
-      >
-                  <span
+        <button
+          className="category-btn"
+          onClick={() => handleCategoryClick(category)
+          }
+          style={{
+            background: category === selectedCategory && "#392467",
+            color: category === selectedCategory ? "#FFD1E3" : "#392467",
+          }}
+          key={category}
+        >
+          <span
             style={{
               opacity: "1",
             }}
           >
             {category}
           </span>
-      </button>
-            ))}
+        </button>
+      ))}
 
     </Stack>
   );

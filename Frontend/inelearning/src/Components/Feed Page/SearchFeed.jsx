@@ -2,21 +2,23 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CourseCard from './CourseCard';
 import SearchBar from './SearchBar';
-import Sidebar from './Sidebar';
 import './../../styles/card.css';
 import BannerBackground from "../../Assets/home-banner-background.png";
 import AboutBackground from "../../Assets/about-background.png";
 import { useLocation } from 'react-router-dom';
-
+import { getToken, setToken, removeToken } from '../../utils/TokenContext';
+import baseURL from '../../utils/fetchConfig';
+import LoadingPage from '../LoadingPage';
 const SearchFeed = () => {
     const [courses, setCourses] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [courseId, setCourseId] = useState('');
     const location = useLocation();
+
     const searchTerm = location.state && location.state.searchTerm ? location.state.searchTerm : '';
     const setAuthToken = () => {
-        const token = localStorage.getItem('token');
+        const token = getToken();
         if (token) {
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         } else {
@@ -27,7 +29,7 @@ const SearchFeed = () => {
     const fetchCourses = async () => {
         try {
             setAuthToken();
-            const response = await axios.get(`http://localhost:8080/api/courses`);
+            const response = await axios.get(`${baseURL}/courses`);
             setCourses(response.data);
             setLoading(false);
         } catch (error) {
@@ -40,12 +42,13 @@ const SearchFeed = () => {
     useEffect(() => {
         console.log('Fetching courses...');
         fetchCourses();
-    }, [courseId]); // Fetch courses when courseId changes
+    }, [courseId]);
 
 
 
     if (loading) {
-        return <div>Loading...</div>;
+        return       <div> <LoadingPage loading={loading} />
+      </div>;
     }
 
     if (error) {
@@ -71,11 +74,11 @@ const SearchFeed = () => {
                 <h2>
                     Results for <span style={{ color: '#5D3587', fontStyle: 'italic' }}>{`''${searchTerm}''  `}</span>:
                 </h2>                <div className="course-list">
-                {courses && courses
-  .filter(course => course.title && course.title.toLowerCase().includes(searchTerm.toLowerCase()))
-  .map(course => (
-    <CourseCard key={course.courseId} course={course} />
-  ))}
+                    {courses && courses
+                        .filter(course => course.title && course.title.toLowerCase().includes(searchTerm.toLowerCase()))
+                        .map(course => (
+                            <CourseCard key={course.courseId} course={course} />
+                        ))}
 
                 </div>
             </div>

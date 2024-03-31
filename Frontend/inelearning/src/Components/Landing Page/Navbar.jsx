@@ -16,44 +16,44 @@ function scrollToSection(id) {
   }
 }
 const Navbar = () => {
- const [openMenu, setOpenMenu] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
   const menuOptions = [
     {
       text: "About",
       event: "about",
-      path: "#about", 
+      path: "#about",
     },
     {
       text: "How it works",
       event: "work",
-      path: "#work", 
+      path: "#work",
     },
     {
       text: "Testimonials",
       event: "testimonial",
-      path: "#testimonial", 
+      path: "#testimonial",
     },
 
   ];
 
-function handleNavLinkClick(event, id) {
-  event.preventDefault();
-  scrollToSection(id);
-}
+  function handleNavLinkClick(event, id) {
+    event.preventDefault();
+    scrollToSection(id);
+  }
 
   return (
     <nav>
       <div className="nav-logo-container">
-        <img src={Logo} alt="" className="nav-logo-img" /> 
+        <img src={Logo} alt="" className="nav-logo-img" />
       </div>
       <div className="navbar-links-container">
-      <a href="#about" onClick={(event) => handleNavLinkClick(event, 'about')}>About</a>
-      <a href="#work" onClick={(event) => handleNavLinkClick(event, 'work')}>How it works</a>
-      <a href="#testimonial" onClick={(event) => handleNavLinkClick(event, 'testimonial')}>Testimonials</a>
-      <Link to={'/login'}><button className="primary-button">Get Started</button></Link>
+        <a href="#about" onClick={(event) => handleNavLinkClick(event, 'about')}>About</a>
+        <a href="#work" onClick={(event) => handleNavLinkClick(event, 'work')}>How it works</a>
+        <a href="#testimonial" onClick={(event) => handleNavLinkClick(event, 'testimonial')}>Testimonials</a>
+        <Link to={'/login'}><button className="primary-button">Get Started</button></Link>
       </div>
-      
-    <div className="navbar-menu-container">
+
+      <div className="navbar-menu-container">
         <HiOutlineBars3 onClick={() => setOpenMenu(true)} />
       </div>
       <Drawer open={openMenu} onClose={() => setOpenMenu(false)} anchor="right">
@@ -67,8 +67,8 @@ function handleNavLinkClick(event, id) {
             {menuOptions.map((item) => (
               <ListItem key={item.text} disablePadding>
                 <ListItemButton >
-                <a href={item.path} onClick={(event) => handleNavLinkClick(event, item.event)}>
-                  <ListItemText primary={item.text} class="item-navbar"/> </a>
+                  <a href={item.path} onClick={(event) => handleNavLinkClick(event, item.event)}>
+                    <ListItemText primary={item.text} class="item-navbar" /> </a>
                 </ListItemButton>
               </ListItem>
             ))}

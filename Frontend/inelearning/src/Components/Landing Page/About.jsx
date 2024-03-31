@@ -18,18 +18,18 @@ const About = () => {
           An e-platform from INEs to INEs
         </h1>
         <p className="primary-text">
-        INElearning serves as a dynamic hub for students eager to exchange expertise and expand their horizons. Here, individuals can seamlessly share their skills for others to learn and grow from.
+          INElearning serves as a dynamic hub for students eager to exchange expertise and expand their horizons. Here, individuals can seamlessly share their skills for others to learn and grow from.
         </p>
         <p className="primary-text">
-        Join us to exchange knowledge and expand horizons effortlessly.
+          Join us to exchange knowledge and expand horizons effortlessly.
         </p>
 
         <div className="about-buttons-container">
-  <button className="secondary-button">
-    <span className="watch-video-button"><BsFillPlayCircleFill /></span>
-    <span className="button-text">Watch Video</span>
-  </button>
-</div>
+          <button className="secondary-button">
+            <span className="watch-video-button"><BsFillPlayCircleFill /></span>
+            <span className="button-text">Watch Video</span>
+          </button>
+        </div>
       </div>
     </div>
   );

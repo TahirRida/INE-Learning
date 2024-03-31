@@ -32,7 +32,7 @@
     border: 0.5px solid #A367B1;
     font-size: 14px;
     width: 80%;
-    border-radius: 20px; /* Correct class name and add border radius */
+    border-radius: 20px;
     margin-right: 15px;
 
 }
@@ -64,8 +64,9 @@
     font-size: 15px;
     font-weight: bold;
 }
-.hello-rida-container button{
-    color:#392467;
+
+.hello-rida-container button {
+    color: #392467;
     font-weight: bolder;
     text-transform: capitalize;
     border: 0;
@@ -74,6 +75,7 @@
     font-size: 20px;
     margin-left: 6px;
 }
+
 .nav-logo-img {
     width: 75%;
     height: auto;
@@ -82,9 +84,14 @@
 .navbar-menu-container {
     cursor: pointer;
 }
+.logout{
+    color:#A367B1;
+    font-weight: bolder;
+    cursor: pointer;
+}
 
 @media (max-width: 768px) {
     .navbar-middle {
-        display: none; /* Hide middle content on smaller screens */
+        display: none;
     }
 }
