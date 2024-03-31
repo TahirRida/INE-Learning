@@ -55,15 +55,17 @@ public class CourseService {
         oldCourse.setCourseOwnerId(newCourse.getCourseOwnerId());
         oldCourse.setContent(newCourse.getContent());
         oldCourse.setVideo(newCourse.getVideo());
+        oldCourse.setThumbnail(newCourse.getThumbnail());
+        oldCourse.setDescription(newCourse.getDescription());
         oldCourse.setCreatedAt(newCourse.getCreatedAt());
         oldCourse.setIsApproved(newCourse.getIsApproved());
+        oldCourse.setTitle(newCourse.getTitle());
         return courseRepository.save(oldCourse);
     }
 
     //DELETE
-    public String deleteCourse(String courseId){
+    public void deleteCourse(String courseId){
         courseRepository.deleteById(courseId);
-        return "course has been deleted succesfully!";
     }
 
 

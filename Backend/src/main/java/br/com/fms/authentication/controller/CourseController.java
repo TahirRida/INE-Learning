@@ -90,11 +90,10 @@ public class CourseController {
     }
 
     //UPDATE
-    @PutMapping
+    @PutMapping("/{courseId}")
     public Course modifyCourse(@RequestBody Course course){
         return courseService.updateCourse(course);
     }
-
     //DELETE
     @DeleteMapping("/{courseId}")
     public ResponseEntity<String> deleteCourse(@PathVariable String courseId, @AuthenticationPrincipal UserDetails userDetails) {

@@ -22,6 +22,8 @@ public class Course {
     private String title;
     private String description;
     private String video;
+    private String category;
+    private String thumbnail;
     private Instant createdAt;
     private Boolean isApproved=false;
     List<Comment> comments = new ArrayList<>();

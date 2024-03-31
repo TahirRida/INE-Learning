@@ -28,6 +28,7 @@ public class User {
     //    @NotBlank
 //    @Size(max = 120)
     private String password;
+    private String profilePicture;
 
     @DBRef
     private Set<Role> roles = new HashSet<>();
