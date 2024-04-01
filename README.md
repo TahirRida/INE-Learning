@@ -1,4 +1,3 @@
-```markdown
 # INE-Learning Platform
 
 Welcome to the official repository of INE-Learning, a cutting-edge E-Learning platform designed exclusively for the students of INPT. INE-Learning is an interactive environment where students can share and gain knowledge, empowering each other through education. Our platform stands out by offering a user-friendly interface, a wide range of courses, and seamless interaction between students.
