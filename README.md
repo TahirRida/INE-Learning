@@ -29,20 +29,20 @@ To get the platform up and running on your local machine, follow these steps:
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/yourgithubusername/INE-Learning.git
+git clone https://github.com/TahirRida/INE-Learning
 ```
 
 2. **Install dependencies**
 
 For the backend (Spring Boot):
 ```bash
-cd backend
+cd Backend
 ./mvnw install
 ```
 
 For the frontend (ReactJS):
 ```bash
-cd frontend
+cd Frontend/inelearning
 npm install
 ```
 
