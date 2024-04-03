@@ -2,7 +2,7 @@
 ![LOGO](inelogo.png)
 Welcome to the official repository of INE-Learning, a cutting-edge E-Learning platform designed exclusively for the students of INPT. INE-Learning is an interactive environment where students can share and gain knowledge, empowering each other through education. Our platform stands out by offering a user-friendly interface, a wide range of courses, and seamless interaction between students.
 
-![Landing Page](landing_ine.PNG)
+![Landing Page](inelearningdesign.png)
 Start your learning journey here : https://ine-learning-client.vercel.app/
 ## Features
 
